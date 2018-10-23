@@ -15,7 +15,7 @@ var params = {
     Body: {
       Html: {
        Charset: "UTF-8",
-       Data: "This would be the body of the text. Blah, blah, blah, blah, blah."
+       Data: "This would be the body of the text. Blah, blah, blah, blah, blah.\n more blah, blah, blah, blah\n ect., ect., ect."
       },
       Text: {
        Charset: "UTF-8",
