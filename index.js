@@ -1,22 +1,18 @@
-// Load the AWS SDK for Node.js
 var AWS = require('aws-sdk');
-// Set the region
+
 AWS.config.update({region: 'us-east-1'});
 
-// Create sendEmail params
 var params = {
-  Destination: { /* required */
+  Destination: {
     CcAddresses: [
       'charleslapress@gmail.com',
-      /* more items */
     ],
     ToAddresses: [
       'chuck_l@att.net',
-      /* more items */
     ]
   },
-  Message: { /* required */
-    Body: { /* required */
+  Message: {
+    Body: {
       Html: {
        Charset: "UTF-8",
        Data: "This would be the body of the text. Blah, blah, blah, blah, blah."
@@ -31,17 +27,14 @@ var params = {
       Data: 'Test email'
      }
     },
-  Source: 'charleslapress@gmail.com', /* required */
+  Source: 'charleslapress@gmail.com',
   ReplyToAddresses: [
       'charleslapress@gmail.com',
-    /* more items */
   ],
 };
 
-// Create the promise and SES service object
 var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
-// Handle promise's fulfilled/rejected states
 sendPromise.then(
   function(data) {
     console.log(data.MessageId);
